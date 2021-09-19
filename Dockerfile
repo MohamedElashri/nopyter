@@ -81,5 +81,3 @@ WORKDIR /workspace
 
 # Start Notebook
 CMD jupyter lab --allow-root
-
-USER root
