@@ -70,9 +70,9 @@ RUN jupyter labextension install @jupyterlab/git --no-build && \
 
 
 # Install jupyter_tabnine
-RUN pip3 install jupyter-tabnine --user && \
-    jupyter nbextension install --py jupyter_tabnine --user && \
-    jupyter nbextension enable --py jupyter_tabnine --user 
+RUN pip3 install jupyter-tabnine  && \
+    jupyter nbextension install --py jupyter_tabnine && \
+    jupyter nbextension enable --py jupyter_tabnine  
 
 
 
