@@ -43,7 +43,10 @@ RUN apt-get update && \
     pandoc \
     texlive-xetex \
     texlive-fonts-recommended \
-    texlive-latex-recommended 
+    texlive-latex-recommended \
+    texlive \
+    texlive-latex-extra \
+    texlive-generic-extra
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
