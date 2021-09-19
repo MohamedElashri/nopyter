@@ -45,8 +45,7 @@ RUN apt-get update && \
     texlive-fonts-recommended \
     texlive-latex-recommended \
     texlive \
-    texlive-latex-extra \
-    texlive-generic-extra
+    texlive-latex-extra 
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
