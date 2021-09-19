@@ -7,6 +7,10 @@ IMAGE_VERSION := 1.0
 build:
 	docker build --no-cache -t $(IMAGE_NAME):$(IMAGE_VERSION) -t $(IMAGE_NAME):latest .
 
+.PHONY: multi-build
+multi-build:
+	docker buildx build --platform linux/amd64,linux/arm64 -t $(IMAGE_NAME):$(IMAGE_VERSION) -t $(IMAGE_NAME):latest .
+
 .PHONY: run
 run: build
 	docker run -it -p 8888:8888 --rm $(IMAGE_NAME):$(IMAGE_VERSION)
