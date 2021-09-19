@@ -68,16 +68,19 @@ RUN jupyter labextension install @jupyterlab/git --no-build && \
     rm -rf $HOME/.local
 
 
-
+USER root
 # Install jupyter_tabnine
 RUN pip3 install jupyter-tabnine  && \
     jupyter nbextension install --py jupyter_tabnine && \
     jupyter nbextension enable --py jupyter_tabnine  
 
 
+USER $NB_USER
 
 # Create folder
 WORKDIR /workspace
 
 # Start Notebook
 CMD jupyter lab --allow-root
+
+
