@@ -40,7 +40,8 @@ RUN apt-get update && \
     zlib1g-dev \
     libffi-dev \
     libgmp-dev \
-    libzmq5-dev
+    libzmq5-dev \
+    rsync
     
 
 # Install Tex for nbconvert
