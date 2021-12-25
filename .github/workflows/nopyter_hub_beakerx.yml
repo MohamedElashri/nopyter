@@ -1,0 +1,21 @@
+name: Build melashri/nopyterhub & Push to Dockerhub
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 1 * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Publish to Registry
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: melashri/nopyterhub
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        dockerfile: nopyter-hub/beakerx/Dockerfile
+        context: nopyter-hub/beakerx
+        tags: "beakerx"
