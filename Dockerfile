@@ -36,7 +36,7 @@ RUN apt-get update && \
     gcc \
     g++ \
     nano \
-    software-properties \
+    software-properties-common \
     zlib1g-dev \
     libffi-dev \
     libgmp-dev \
