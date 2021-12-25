@@ -12,7 +12,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build the SwiftLaTeX Docker image
+    - name: Build the Docker image
       run: |
          docker build . --file Dockerfile --tag melashri/nopyter:$(date +%s)
 
