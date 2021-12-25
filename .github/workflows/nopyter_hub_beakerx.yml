@@ -1,4 +1,4 @@
-name: Build melashri/nopyterhub & Push to Dockerhub
+name: Build beakerx & Push to Dockerhub
 
 on:
   workflow_dispatch:
