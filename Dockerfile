@@ -56,6 +56,12 @@ RUN apt-get update && \
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# Install jupyter_tabnine
+RUN pip3 install jupyter-tabnine  && \
+    jupyter nbextension install --py jupyter_tabnine && \
+    jupyter nbextension enable --py jupyter_tabnine  
+
+
 # Add RUN statements to install packages as the $NB_USER defined in the base images.
 
 USER $NB_USER
@@ -72,10 +78,6 @@ RUN jupyter labextension install @jupyterlab/toc --no-build && \
     rm -rf $HOME/.node-gyp && \
     rm -rf $HOME/.local
 
-# Install jupyter_tabnine
-RUN pip3 install jupyter-tabnine  && \
-    jupyter nbextension install --py jupyter_tabnine && \
-    jupyter nbextension enable --py jupyter_tabnine  
 
 RUN conda install -c conda-forge nbgitpuller sos-notebook jupyterlab-sos xeus-cling && \
     python3 -m sos_notebook.install && \
