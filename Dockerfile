@@ -64,9 +64,7 @@ USER $NB_USER
 COPY config/ /home/$NB_USER/.jupyter/
 
 # Install extensions
-RUN jupyter labextension install @jupyterlab/git --no-build && \
-    jupyter labextension install @jupyterlab/toc --no-build && \
-    jupyter labextension install @ryantam626/jupyterlab_code_formatter --no-build && \
+RUN jupyter labextension install @jupyterlab/toc --no-build && \
     jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
     jupyter lab build --dev-build=False --minimize=False && \
     jupyter lab clean && \
@@ -74,15 +72,11 @@ RUN jupyter labextension install @jupyterlab/git --no-build && \
     rm -rf $HOME/.node-gyp && \
     rm -rf $HOME/.local
 
-
-USER root
 # Install jupyter_tabnine
 RUN pip3 install jupyter-tabnine  && \
     jupyter nbextension install --py jupyter_tabnine && \
     jupyter nbextension enable --py jupyter_tabnine  
 
-
-USER $NB_USER
 RUN conda install -c conda-forge nbgitpuller sos-notebook jupyterlab-sos xeus-cling && \
     python3 -m sos_notebook.install && \
     rsync -a "${HOME}/.local/share/jupyter/kernels" "${CONDA_DIR}/share/jupyter"
