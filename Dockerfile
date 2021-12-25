@@ -35,7 +35,13 @@ RUN apt-get update && \
     libboost-filesystem-dev \
     gcc \
     g++ \
-    nano
+    nano \
+    software-properties \
+    zlib1g-dev \
+    libffi-dev \
+    libgmp-dev \
+    libzmq5-dev
+    
 
 # Install Tex for nbconvert
 RUN apt-get update && \
@@ -76,6 +82,11 @@ RUN pip3 install jupyter-tabnine  && \
 
 
 USER $NB_USER
+RUN conda install -c conda-forge nbgitpuller sos-notebook jupyterlab-sos xeus-cling && \
+    python3 -m sos_notebook.install && \
+    rsync -a "${HOME}/.local/share/jupyter/kernels" "${CONDA_DIR}/share/jupyter"
+
+
 
 # Create folder
 WORKDIR /workspace
